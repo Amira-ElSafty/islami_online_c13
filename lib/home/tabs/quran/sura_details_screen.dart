@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_online_c13/app_colors.dart';
-import 'package:islami_online_c13/home/tabs/quran/sura_content_item.dart';
 import 'package:islami_online_c13/model/sura_model.dart';
+import 'package:islami_online_c13/utils/app_colors.dart';
+import 'package:islami_online_c13/utils/app_styles.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'sura_details_screen';
@@ -12,19 +12,19 @@ class SuraDetailsScreen extends StatefulWidget {
 }
 
 class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
-  List<String> verses = [];
-
+  // List<String> verses = [];
+  String suraContentText = '';
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
-    if (verses.isEmpty) {
-      loadSuraFile(args.index);
+    if (suraContentText.isEmpty) {
+      loadSuraFile(args.fileName);
     }
     return Scaffold(
       appBar: AppBar(
         title: Text(
           args.suraEnglishName,
-          style: const TextStyle(color: AppColors.primaryDark),
+          style: AppStyles.bold24Primary,
         ),
       ),
       body: Stack(
@@ -46,27 +46,26 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
               ),
               Text(
                 args.suraArabicName,
-                style: const TextStyle(color: AppColors.primaryDark),
+                style: AppStyles.bold24Primary,
               ),
               const SizedBox(
                 height: 30,
               ),
-              Expanded(
-                child: verses.isEmpty
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                        color: AppColors.primaryDark,
-                      ))
-                    : ListView.builder(
-                        itemBuilder: (context, index) {
-                          return SuraContentItem(
-                            content: verses[index],
-                            index: index,
-                          );
-                        },
-                        itemCount: verses.length,
+              suraContentText.isEmpty
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                      color: AppColors.primaryDark,
+                    ))
+                  : Expanded(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          suraContentText,
+                          textAlign: TextAlign.center,
+                          textDirection: TextDirection.rtl,
+                          style: AppStyles.bold20Primary,
+                        ),
                       ),
-              )
+                    )
             ],
           ),
         ],
@@ -74,13 +73,17 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     );
   }
 
-  void loadSuraFile(int index) async {
-    String suraContent =
-        await rootBundle.loadString('assets/files/${index + 1}.txt');
+  void loadSuraFile(String fileName) async {
+    String suraContent = await rootBundle.loadString('assets/files/$fileName');
     List<String> suraLines = suraContent.split('\n');
+    for (int i = 0; i < suraLines.length; i++) {
+      suraLines[i] += '[${i + 1}] ';
+    }
+    suraContentText = suraLines.join('');
+    print('suraContent: $suraContent');
 
     /// content
-    verses = suraLines;
+    // verses = suraLines;
     setState(() {});
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_online_c13/app_colors.dart';
+import 'package:islami_online_c13/utils/app_colors.dart';
 
 class HadethContentItem extends StatelessWidget {
   String content;

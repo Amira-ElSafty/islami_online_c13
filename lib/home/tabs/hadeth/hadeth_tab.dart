@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_online_c13/app_colors.dart';
 import 'package:islami_online_c13/home/tabs/hadeth/hadeth_details_screen.dart';
 import 'package:islami_online_c13/model/hadeth_model.dart';
+import 'package:islami_online_c13/utils/app_colors.dart';
 
 class HadethTab extends StatefulWidget {
   @override
@@ -15,6 +15,8 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     if (hadethList.isEmpty) {
       loadHadethFile();
     }
@@ -61,8 +63,8 @@ class _HadethTabState extends State<HadethTab> {
             ),
           ),
           options: CarouselOptions(
-            height: 500,
-            viewportFraction: 0.75,
+            height: MediaQuery.of(context).size.height * 0.6,
+            viewportFraction: 0.72,
             enlargeCenterPage: true,
             // enableInfiniteScroll: false
           ),
