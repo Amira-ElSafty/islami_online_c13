@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:islami_online_c13/home/tabs/hadeth/hadeth_details_screen.dart';
 import 'package:islami_online_c13/model/hadeth_model.dart';
 import 'package:islami_online_c13/utils/app_colors.dart';
+import 'package:islami_online_c13/utils/app_styles.dart';
 
 class HadethTab extends StatefulWidget {
   @override
@@ -15,8 +16,8 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
+    // var width = MediaQuery.of(context).size.width;
+    // var height = MediaQuery.of(context).size.height;
     if (hadethList.isEmpty) {
       loadHadethFile();
     }
@@ -50,12 +51,12 @@ class _HadethTabState extends State<HadethTab> {
                         children: [
                           Text(
                             hadethList[itemIndex].title,
-                            style: const TextStyle(fontSize: 20),
+                            style: AppStyles.bold24Black,
                           ),
                           Expanded(
                               child: Text(
-                            hadethList[itemIndex].content.join(''),
-                            style: const TextStyle(fontSize: 20),
+                            hadethList[itemIndex].content.join(),
+                            style: AppStyles.bold16Black,
                           ))
                         ],
                       ),

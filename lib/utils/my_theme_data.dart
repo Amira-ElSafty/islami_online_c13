@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_online_c13/utils/app_styles.dart';
 
 import 'app_colors.dart';
 
@@ -9,10 +10,10 @@ class MyThemeData {
         backgroundColor: AppColors.blackColor,
           centerTitle: true,
           iconTheme: IconThemeData(color: AppColors.primaryDark)),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedItemColor: AppColors.whiteColor,
         unselectedItemColor: AppColors.blackColor,
         showSelectedLabels: true,
-    ),
+        selectedLabelStyle: AppStyles.bold16White),
   );
 }

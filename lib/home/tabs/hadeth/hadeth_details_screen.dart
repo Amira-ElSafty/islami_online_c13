@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_online_c13/home/tabs/hadeth/hadeth_content_item.dart';
 import 'package:islami_online_c13/model/hadeth_model.dart';
 import 'package:islami_online_c13/utils/app_colors.dart';
+import 'package:islami_online_c13/utils/app_styles.dart';
 
 class HadethDetailsScreen extends StatelessWidget {
   static const String routeName = 'hadeth_details';
@@ -30,8 +31,7 @@ class HadethDetailsScreen extends StatelessWidget {
                 ),
                 Text(
                   args.title,
-                  style: const TextStyle(
-                      fontSize: 24, color: AppColors.primaryDark),
+                  style: AppStyles.bold24Primary,
                 ),
                 const SizedBox(
                   height: 30,

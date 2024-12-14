@@ -66,7 +66,7 @@ class _QuranTabState extends State<QuranTab> {
                       'assets/images/icon_search.png',
                     )),
                 hintText: 'Sura Name',
-                hintStyle: const TextStyle(color: AppColors.whiteColor)),
+                hintStyle: AppStyles.bold16White),
             onChanged: (text) {
               searchText = text;
               filterList = SuraModel.suraList.where((suraModel) {

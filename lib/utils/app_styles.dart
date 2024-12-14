@@ -6,6 +6,8 @@ import 'app_colors.dart';
 class AppStyles {
   static TextStyle bold16White = GoogleFonts.elMessiri(
       fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.whiteColor);
+  static TextStyle bold16Black = GoogleFonts.elMessiri(
+      fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.blackColor);
   static TextStyle bold20White = GoogleFonts.elMessiri(
       fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.whiteColor);
   static TextStyle bold20Primary = GoogleFonts.elMessiri(
